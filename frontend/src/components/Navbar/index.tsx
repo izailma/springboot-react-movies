@@ -13,7 +13,7 @@ function Navbar(){
    
              <div className="dsmovie-contact-container">
                <Github/>
-               <p>/IzaDarvelli</p>
+               <p className="dsmovie-contact-link">/IzaDarvelli</p>
              </div>
             </a>
           </div>
@@ -23,3 +23,4 @@ function Navbar(){
 }
 
 export default Navbar;
+
