@@ -17,21 +17,19 @@ import com.devsuperior.dsmovie.repositories.UserRepository;
 public class ScoreService {
 
 	@Autowired
-	private  MovieRepository movieRepository;
+	private MovieRepository movieRepository;
 	
-
 	@Autowired
-	private  UserRepository userRepository;
+	private UserRepository userRepository;
 	
-
 	@Autowired
-	private  ScoreRepository scoreRepository;
+	private ScoreRepository scoreRepository;
 	
 	@Transactional
 	public MovieDTO saveScore(ScoreDTO dto) {
 		
 		User user = userRepository.findByEmail(dto.getEmail());
-		if(user == null) {
+		if (user == null) {
 			user = new User();
 			user.setEmail(dto.getEmail());
 			user = userRepository.saveAndFlush(user);
@@ -49,9 +47,8 @@ public class ScoreService {
 		double sum = 0.0;
 		for (Score s : movie.getScores()) {
 			sum = sum + s.getValue();
-			
 		}
-		
+			
 		double avg = sum / movie.getScores().size();
 		
 		movie.setScore(avg);
@@ -61,5 +58,4 @@ public class ScoreService {
 		
 		return new MovieDTO(movie);
 	}
-	
 }
