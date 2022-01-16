@@ -25,7 +25,7 @@ const FormCard = ({ movieId }: Props) => {
       .catch((err) => console.log(err));
   }, [movieId]);
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const email = (event.target as any).email.value;
@@ -34,20 +34,20 @@ const FormCard = ({ movieId }: Props) => {
     if (!validateEmail(email)) {
       return;
     }
+    //se ele não validar o e-mail corta a função.
 
     const config: AxiosRequestConfig = {
       baseURL: BASE_URL,
       method: "PUT",
       url: "/scores",
       data: {
-        email: email,
-        movieId: movieId,
-        score: score,
+      email: email,
+      movieId: movieId,
+      score: score,
       },
     };
 
-    axios(config)
-    .then(() => {
+    axios(config).then(() => {
       navigate("/");
     })
     .catch(err => console.log(err));
